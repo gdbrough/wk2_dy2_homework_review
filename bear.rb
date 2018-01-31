@@ -8,7 +8,7 @@ class Bear
   end
 
   def food_count
-    return @stomach.count()
+    return @stomach.compact.count()
   end
 
   def catch_fish(fish)

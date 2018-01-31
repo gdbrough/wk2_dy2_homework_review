@@ -3,6 +3,7 @@ require("minitest/rg")
 
 require_relative("../bear.rb")
 require_relative("../fish.rb")
+require_relative("../river.rb")
 
 class BearTest < MiniTest::Test
 
@@ -22,6 +23,14 @@ class BearTest < MiniTest::Test
     fish = Fish.new("Lunch")
     @bear.catch_fish(fish)
     assert_equal(1, @bear.food_count)
+  end
+
+  def test_bear_can_eat_fish_from_river
+    river = River.new("Clyde")
+    fish = Fish.new("Dinner")
+    river.add_fish(fish)
+    @bear.catch_fish(river.remove_fish())
+    assert_equal(1, @bear.food_count())
   end
 
   # def test_how_many_fish_in_bears_stomach

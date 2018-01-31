@@ -3,11 +3,12 @@ require("minitest/rg")
 
 require_relative("../river.rb")
 require_relative("../bear.rb")
+require_relative("../fish.rb")
 
 class RiverTest < MiniTest::Test
 
   def setup
-    @river = River.new("Amazon", 100)
+    @river = River.new("Amazon")
   end
 
   def test_returns_river_name
@@ -16,13 +17,13 @@ class RiverTest < MiniTest::Test
 
   def test_returns_number_of_fish
     nbr_fish = @river.count_fish_in_river()
-    assert_equal(100, nbr_fish)
+    assert_equal(0, nbr_fish)
   end
 
-  def test_returns_number_of_fish__after_bear_takes_one
-    @river.bear_takes("salmon")
-    nbr_fish = @river.count_fish_in_river()
-    assert_equal(99, nbr_fish)
+  def test_can_add_fish
+    fish = Fish.new("Fingers")
+    @river.add_fish(fish)
+    assert_equal(1, @river.count_fish_in_river())
   end
 
 end

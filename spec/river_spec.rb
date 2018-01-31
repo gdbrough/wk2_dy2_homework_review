@@ -21,9 +21,17 @@ class RiverTest < MiniTest::Test
   end
 
   def test_can_add_fish
-    fish = Fish.new("Wanda")
+    fish = Fish.new("Fingers")
     @river.add_fish(fish)
     assert_equal(1, @river.count_fish_in_river())
+  end
+
+  def test_can_remove_fish
+    fish = Fish.new("Pie")
+    @river.add_fish(fish)
+    fish_to_be_eaten = @river.remove_fish()
+    assert_equal(0, @river.count_fish_in_river())
+    assert_equal("Pie", fish_to_be_eaten.name)
   end
 
 end

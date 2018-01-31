@@ -7,6 +7,10 @@ class Bear
     @stomach = []
   end
 
+  def food_count
+    return @stomach.count()
+  end
+
   # def check_stomach
   #   return @stomach.count
   # end
